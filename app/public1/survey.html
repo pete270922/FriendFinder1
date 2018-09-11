@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>No Friend Survey</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center">No Friend Survey</h1>
+            <hr>
+        </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="friend-name">Name</label>
+                            <input type="text" class="form-control" id="friend-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="uniqueIdentifier">Unique ID</label>
+                            <input type="text" class="form-control" id="uniqueIdentifier">
+                        </div>
+                        <h1>How do you favor New York?</h1>
+                            <select data-placeholder class="chosen-select" id="q1">
+                                <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                                <option> 1</option>
+                                <option> 2</option>
+                                <option> 3</option>
+                                <option> 4</option>
+                                <option> 5</option>
+                            </select>
+                        <h1>How do you favor Zurich?</h1>
+                        <select data-placeholder class="chosen-select" id="q2">
+                            <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                            <option> 1</option>
+                            <option> 2</option>
+                            <option> 3</option>
+                            <option> 4</option>
+                            <option> 5</option>
+                        </select>
+                        <h1>How do you favor London?</h1>
+                        <select data-placeholder class="chosen-select" id="q3">
+                            <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                            <option> 1</option>
+                            <option> 2</option>
+                            <option> 3</option>
+                            <option> 4</option>
+                            <option> 5</option>
+                        </select>
+                        <h1>How do you favor San Francisco?</h1>
+                        <select data-placeholder class="chosen-select" id="q4">
+                            <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                            <option> 1</option>
+                            <option> 2</option>
+                            <option> 3</option>
+                            <option> 4</option>
+                            <option> 5</option>
+                        </select>
+                        <h1>How do you favor Milan?</h1>
+                        <select data-placeholder class="chosen-select" id="q5">
+                            <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                            <option> 1</option>
+                            <option> 2</option>
+                            <option> 3</option>
+                            <option> 4</option>
+                            <option> 5</option>
+                        </select>
+                        <h1>How do you favor Aspen?</h1>
+                        <select data-placeholder class="chosen-select" id="q6">
+                            <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                            <option> 1</option>
+                            <option> 2</option>
+                            <option> 3</option>
+                            <option> 4</option>
+                            <option> 5</option>
+                        </select>
+                        <h1>How do you favor Sydney?</h1>
+                        <select data-placeholder class="chosen-select" id="q7">
+                            <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                            <option> 1</option>
+                            <option> 2</option>
+                            <option> 3</option>
+                            <option> 4</option>
+                            <option> 5</option>
+                        </select>
+                        <h1>How do you favor St. Petersburg?</h1>
+                        <select data-placeholder class="chosen-select" id="q8">
+                            <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                            <option> 1</option>
+                            <option> 2</option>
+                            <option> 3</option>
+                            <option> 4</option>
+                            <option> 5</option>
+                        </select>
+                        <h1>How do you favor Johanburg?</h1>
+                        <select data-placeholder class="chosen-select" id="q9">
+                            <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                            <option> 1</option>
+                            <option> 2</option>
+                            <option> 3</option>
+                            <option> 4</option>
+                            <option> 5</option>
+                        </select>
+                        <h1>How do you favor Rio de Janiero?</h1>
+                        <select data-placeholder class="chosen-select" id="q1">
+                                <option> Select from 1 (Do Not Favor) - 5 (Highly Favor)</option>
+                                <option> 1</option>
+                                <option> 2</option>
+                                <option> 3</option>
+                                <option> 4</option>
+                                <option> 5</option>
+                            </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary submit">Submit</button>
+            </div>
+    </div>
+    <footer class="footer">
+            <div class="container">
+              <p>
+                <a href="/api/home">Home</a>
+            </div>
+    </footer>
+</body>
+
+<script type="text/javascript">
+$(".submit").on("click", function(event){
+    event.preventDefault();
+    var newUser = {
+        username: $("#friend-name").val().trim(),
+        uniqueidentifier: $("#uniqueIdentifier").val().trim(),
+        score: [
+        $("#q1.chosen-select").val(),
+        $("#q2.chosen-select").val(),
+        $("#q3.chosen-select").val(),
+        $("#q4.chosen-select").val(),
+        $("#q5.chosen-select").val(),
+        $("#q6.chosen-select").val(),
+        $("#q7.chosen-select").val(),
+        $("#q8.chosen-select").val(),
+        $("#q9.chosen-select").val(),
+        $("#q10.chosen-select").val(),
+        ],
+
+    }
+    console.log(newUser);
+    $.post("/api/friends")
+})
+</script>
+</html>

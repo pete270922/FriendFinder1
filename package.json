@@ -1,0 +1,13 @@
+{
+  "name": "friendfinder1",
+  "version": "1.0.0",
+  "description": "Question app to determine similiarities based on 10 questions",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pete Gallagher",
+  "license": "ISC"
+}
