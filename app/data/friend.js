@@ -6,3 +6,5 @@ var newUser = [{
   uniqueIdentifier: "No_identity",
   score: [1,1,1,1,1,1,1,1,1,1],
 }];
+
+module.exports = friends;
