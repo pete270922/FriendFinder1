@@ -6,24 +6,36 @@ var friend1 = require("../data/friend");
 module.exports  = function(app){
 
     app.get("/api/friend", function (req, res){
-        res.json(friend1);
-    });
-    
-    app.post("/api/friend", function(req, res){
-        if (newUser == true ){
-            surveySum.push(req.body);
-            res.json(true);
-        }
-        else {
+       var bestMatch = {
+           name:"",
+           friendDifference: 100000000
+       };
+       var userData = req.body;
+       var userScores = userData.scores;
 
-            surveySum.push(req.body);
-            res.json(false);
-        }
-    });
+       var totalDifference;
+       for (var i = 0; i <friends.length; i++){
+           var currentFriend = friends[i];
+           totalDifference = 0;
 
-    app.post("/api/clear", function(req, res){
-        surveySum =[];
-        friend = [];
-        res.json({ok:true});
-    });
-}
+           console.log(currentFriend.name);
+
+        for (var j = 0; j < currentFriend.scores.length; j++){
+            var currentFriendScore = currentFriend.scores[j];
+            var currentUserScore = userScores[j];
+
+            totalDifference += Math.abs(parseInt(currentUserScore)-parseInt(currentFriendScore));
+        }
+        if (totalDifference <= bestMatch.friendDifference){
+            bestMatch.name = currentFriend.name;
+            bestMatch.photo = currentFriend.photo;
+            bestMatch.friendDifference = totalDifference;
+        }
+       }
+
+       friends.push(userData);
+
+       res.json(bestMatch);
+
+    })
+};
